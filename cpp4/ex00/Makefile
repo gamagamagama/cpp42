@@ -6,12 +6,12 @@
 #    By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/19 15:21:18 by mgavorni          #+#    #+#              #
-#    Updated: 2025/11/19 16:44:44 by mgavorni         ###   ########.fr        #
+#    Updated: 2025/11/20 14:16:01 by mgavorni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME		=	FragTrap
+NAME		=	Polymorphism
 CC			=	c++
 CFLAGS		=	-Wall -Wextra -Werror -std=c++98
 
@@ -19,9 +19,11 @@ SRC_DIR		=	src/
 OBJ_DIR		=	obj/
 INC_DIR		=	inc/
 
-SRC_FILES	=	ClapTrap.cpp \
-				ScavTrap.cpp \
-				FragTrap.cpp \
+SRC_FILES	=	Animal.cpp \
+				Cat.cpp \
+				Dog.cpp \
+				WrongAnimal.cpp \
+				WrongCat.cpp \
 				main.cpp
 
 SRC			=	$(addprefix $(SRC_DIR), $(SRC_FILES))
@@ -31,7 +33,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
-	@echo "Build successful"
+	@echo "$(NAME) Builded Successfully";
 
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.cpp
 	@mkdir -p $(dir $@)
@@ -40,15 +42,15 @@ $(OBJ_DIR)%.o:	$(SRC_DIR)%.cpp
 clean:
 	@if [ -d "$(OBJ_DIR)" ]; then \
 	rm -rf $(OBJ_DIR); \
-	echo "Clean"; else \
+	echo "Clean objects"; else \
 	echo "Nothing to Clean"; \
 	fi;
 
 fclean: clean
 	@if [ -f "$(NAME)" ]; then \
 	rm -f $(NAME); \
-	echo "Deleted $(NAME)"; else \
-	echo "No binary found"; \
+	echo "$(NAME) Deleted Successfully"; else \
+	echo "Nothing to Delete"; \
 	fi;
 
 re: fclean all
