@@ -6,21 +6,16 @@
 /*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 17:34:04 by mgavornik         #+#    #+#             */
-/*   Updated: 2025/11/19 15:34:39 by mgavorni         ###   ########.fr       */
+/*   Updated: 2025/11/21 17:29:55 by mgavorni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
 Contact::Contact(){}
-// {
-//     std::cout << "Contact Constructor" << std::endl;
-// }
 
 Contact::~Contact(){}
-// {
-//     std::cout << "Contact Destructor" << std::endl;
-// }
+
 bool Contact::isNumber(const std::string& str)
 {
     for (size_t i = 0; i < str.length(); i++)

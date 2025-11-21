@@ -6,7 +6,7 @@
 /*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 14:34:40 by mgavorni          #+#    #+#             */
-/*   Updated: 2025/11/19 15:35:00 by mgavorni         ###   ########.fr       */
+/*   Updated: 2025/11/21 17:29:06 by mgavorni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,10 @@ void PhoneBook::addContact()
     do {
         std::cout << "First name: ";
         std::getline(std::cin, first_name);
-        if (!Contact::isAlpha(first_name) || Contact::isEmpty(first_name)) {
+        if (!Contact::isAlpha(first_name) || Contact::isEmpty(first_name)) 
+        {
+            if(std::cin.eof())
+                return;
             std::cout << "First name must be alpha" << std::endl;
         }
     } while (!Contact::isAlpha(first_name) || Contact::isEmpty(first_name));
@@ -88,6 +91,9 @@ void PhoneBook::addContact()
         std::cout << "Last name: ";
         std::getline(std::cin, last_name);
         if (!Contact::isAlpha(last_name) || Contact::isEmpty(last_name)) {
+            
+            if(std::cin.eof())
+                return;
             std::cout << "Last name must be alpha" << std::endl;
         }
     } while (!Contact::isAlpha(last_name) || Contact::isEmpty(last_name));
@@ -96,6 +102,8 @@ void PhoneBook::addContact()
         std::cout << "Nickname: ";
         std::getline(std::cin, nickname);
         if (!Contact::isAlphaNum(nickname) || Contact::isEmpty(nickname)) {
+            if(std::cin.eof())
+                return;
             std::cout << "Nickname could be only alphanumeric" << std::endl;
         }
     } while (!Contact::isAlphaNum(nickname) || Contact::isEmpty(nickname));
@@ -104,6 +112,8 @@ void PhoneBook::addContact()
         std::cout << "Phone number: ";
         std::getline(std::cin, phone_number);
         if (!Contact::isNumber(phone_number) || Contact::isEmpty(phone_number)) {
+            if(std::cin.eof())
+                return;
             std::cout << "Phone number must be a number" << std::endl;
         }
     } while (!Contact::isNumber(phone_number) || Contact::isEmpty(phone_number));
@@ -112,6 +122,8 @@ void PhoneBook::addContact()
         std::cout << "Darkest secret: ";
         std::getline(std::cin, darkest_secret);
         if (!Contact::isAlphaNum(darkest_secret) || Contact::isEmpty(darkest_secret)) {
+            if(std::cin.eof())
+                return;
             std::cout << "Darkest secret could be alphanumeric" << std::endl;
         }
     } while (!Contact::isAlphaNum(darkest_secret) || Contact::isEmpty(darkest_secret));
@@ -131,9 +143,7 @@ void PhoneBook::addContact()
 
 void PhoneBook::processCmdADD(Commands Cmd)
 {
-    std::cout << Cmd << std::endl;
     addContact();
-
 }
 void PhoneBook::displayContact(int index) const
 {
@@ -179,9 +189,7 @@ int getnum(const std::string& str)
 void PhoneBook::processCmdSEARCH(Commands Cmd)
 {
     size_t i =0;
-    std::cout << Cmd << std::endl;
-    std::cout << "SEARCH\n";
- 
+    std::cout << "SEARCH\n"; 
     if (_contact_count == 0) {
         contactHeader();
         Delimeter('x', "- Phonebook is empty -");
@@ -197,7 +205,9 @@ void PhoneBook::processCmdSEARCH(Commands Cmd)
     while( i < _contact_count);
 
     std::string strline;
-    while (true) {
+    while (true ) {
+        if (std::cin.eof())
+                return;
         std::cout << "Enter index of the contact you want to see: ";
         std::getline(std::cin, strline);
         std::cout << strline << std::endl;
@@ -212,7 +222,6 @@ void PhoneBook::processCmdSEARCH(Commands Cmd)
 }
 void PhoneBook::processCmdEXIT(Commands Cmd)
 {
-    std::cout << Cmd << std::endl;
     std::cout << "EXIT\n";
 }
 void PhoneBook::processCmd(std::string& cmd)
