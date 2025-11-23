@@ -6,7 +6,7 @@
 /*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 14:34:40 by mgavorni          #+#    #+#             */
-/*   Updated: 2025/11/21 17:29:06 by mgavorni         ###   ########.fr       */
+/*   Updated: 2025/11/23 15:23:54 by mgavorni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,25 @@ void PhoneBook::inputHandler(Fields field)
 {
     if(field == EMPTY)
         std::cout << "Unknown command" << std::endl;       
+}
+void PhoneBook::AsciiArt(void)
+{
+    std::cout << "\n" 
+    "...................../´¯/)\n" 
+    "..................../¯../\n" 
+    ".................../.../\n" 
+    "................../.../.\n" 
+    "................./.../.\n"
+    "............./´¯/'../´¯¯`·¸\n" 
+    "........../'/../.../......./¨¯\\\n" 
+    "........('(...\'...\'.... ¯~/'...')\n"
+    ".........\\.................\'.../\n"
+    "..........''...\\.......... _.·´\n" 
+    "............\\...IT'S NOT..(\n" 
+    "..............\\..MINISHELL.\\\n"
+    "...............\\..FUCK YOU..\\\n"
+     << std::endl;
+    
 }
 void PhoneBook::contactHeader(void) const
 {
@@ -143,6 +162,7 @@ void PhoneBook::addContact()
 
 void PhoneBook::processCmdADD(Commands Cmd)
 {
+    (void)Cmd;
     addContact();
 }
 void PhoneBook::displayContact(int index) const
@@ -188,6 +208,7 @@ int getnum(const std::string& str)
 
 void PhoneBook::processCmdSEARCH(Commands Cmd)
 {
+    (void)Cmd;
     size_t i =0;
     std::cout << "SEARCH\n"; 
     if (_contact_count == 0) {
@@ -207,7 +228,7 @@ void PhoneBook::processCmdSEARCH(Commands Cmd)
     std::string strline;
     while (true ) {
         if (std::cin.eof())
-                return;
+            return;
         std::cout << "Enter index of the contact you want to see: ";
         std::getline(std::cin, strline);
         std::cout << strline << std::endl;
@@ -222,6 +243,7 @@ void PhoneBook::processCmdSEARCH(Commands Cmd)
 }
 void PhoneBook::processCmdEXIT(Commands Cmd)
 {
+    (void)Cmd;
     std::cout << "EXIT\n";
 }
 void PhoneBook::processCmd(std::string& cmd)

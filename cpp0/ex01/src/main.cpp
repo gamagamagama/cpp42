@@ -6,7 +6,7 @@
 /*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 15:34:56 by mgavorni          #+#    #+#             */
-/*   Updated: 2025/11/21 17:29:15 by mgavorni         ###   ########.fr       */
+/*   Updated: 2025/11/23 15:33:12 by mgavorni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,13 @@ int main(void)
     while(true){
         std::cout << "Enter command: ";
         std::getline(std::cin, input);
-        if(input.compare("EXIT") == 0 || std::cin.eof())
+        if(input.compare("EXIT") == 0)
             break;
+        else if(std::cin.eof())
+        {
+            PB.AsciiArt();
+            break;
+        }
         PB.processCmd(input);
     }
     return(0);

@@ -6,7 +6,7 @@
 /*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 17:26:55 by mgavornik         #+#    #+#             */
-/*   Updated: 2025/11/21 17:30:12 by mgavorni         ###   ########.fr       */
+/*   Updated: 2025/11/23 14:40:43 by mgavorni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ class PhoneBook
         void processCmdEXIT(Commands cmd);
         void ContactAlignment(Contact contact, size_t index) const;
         void Delimeter(char c, const std::string& str) const;
+        void AsciiArt();
         
     private:
         enum {COL_WIDTH = 10};
