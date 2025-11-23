@@ -6,7 +6,7 @@
 #    By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/19 15:21:18 by mgavorni          #+#    #+#              #
-#    Updated: 2025/11/20 14:24:54 by mgavorni         ###   ########.fr        #
+#    Updated: 2025/11/23 17:32:22 by mgavorni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
-	@echo "$(NAME) Builded Successfully";
+	@echo "$(NAME) Built Successfully";
 
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.cpp
 	@mkdir -p $(dir $@)
@@ -38,7 +38,7 @@ $(OBJ_DIR)%.o:	$(SRC_DIR)%.cpp
 clean:
 	@if [ -d "$(OBJ_DIR)" ]; then \
 	rm -rf $(OBJ_DIR); \
-	echo "Clean objects"; else \
+	echo "Clean objects $(OBJ_DIR)"; else \
 	echo "Nothing to Clean"; \
 	fi;
 
