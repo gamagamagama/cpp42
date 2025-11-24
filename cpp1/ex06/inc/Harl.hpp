@@ -6,7 +6,7 @@
 /*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:25:34 by mgavorni          #+#    #+#             */
-/*   Updated: 2025/11/24 17:44:08 by mgavorni         ###   ########.fr       */
+/*   Updated: 2025/11/24 19:02:36 by mgavorni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ class Harl
     public:
         Harl();
         ~Harl();
-        void	complain(std::string level, int lvl);
-        void    harlFilter(std::string level);
+        void    complain(std::string level); //V1
+        int     harlFilter(std::string level); //V1
+       // void	complain(std::string level, int lvl); //V2
+      //  void    harlFilter(std::string level); //V2
     enum Compl {
         DEBUG = 0,
         INFO,

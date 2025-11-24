@@ -6,7 +6,7 @@
 /*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 12:25:31 by mgavorni          #+#    #+#             */
-/*   Updated: 2025/11/24 17:47:01 by mgavorni         ###   ########.fr       */
+/*   Updated: 2025/11/24 19:03:49 by mgavorni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,60 @@ void Harl::error(void) {
     std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
-void Harl::complain(std::string level, int lvl) {
+//V1
+void Harl::complain(std::string level) {
     typedef void (Harl::*funcPtr)();
-    (void)level;
-    funcPtr func[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};	
-    for(int i = lvl; i < 4; i++)
-        (this->*func[i])(); 
-            return;
-    std::cout << "Invalid complain" << std::endl;
+    funcPtr func[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+    int lvl = harlFilter(level);
+    if (lvl == NONE) {
+        std::cout << "Invalid complain" << std::endl;
+        return;
+    }
+    for (int i = lvl; i < 4; ++i)
+        (this->*func[i])();
 }
+
+//V1
+int Harl::harlFilter(std::string level) {
+    int lvl = NONE;
+    
+    if(level.compare("DEBUG") == 0)
+        lvl = DEBUG;
+    else if(level.compare("INFO") == 0)
+        lvl = INFO;
+    else if(level.compare("WARNING") == 0)
+        lvl = WARNING;
+    else if(level.compare("ERROR") == 0)
+        lvl = ERROR;
+    else {
+        lvl = NONE;
+    }
+    switch(lvl)
+    {
+        case DEBUG:
+            return (DEBUG);
+        case INFO:
+            return (INFO);
+        case WARNING:
+            return (WARNING);
+        case ERROR:
+            return (ERROR);
+        default:
+            return (NONE);
+    }
+    return (lvl);
+}
+
+/** V2
+// void Harl::complain(std::string level, int lvl) {
+//     typedef void (Harl::*funcPtr)();
+//     (void)level;
+//     funcPtr func[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};	
+//     for(int i = lvl; i < 4; i++)
+//         (this->*func[i])(); 
+//             return;
+//     std::cout << "Invalid complain" << std::endl;
+// }
 
 void Harl::harlFilter(std::string level) 
 {
@@ -84,3 +129,4 @@ void Harl::harlFilter(std::string level)
             break;
     }
 }
+*/
