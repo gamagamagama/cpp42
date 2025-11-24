@@ -6,12 +6,12 @@
 #    By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/19 15:21:18 by mgavorni          #+#    #+#              #
-#    Updated: 2025/11/19 16:36:24 by mgavorni         ###   ########.fr        #
+#    Updated: 2025/11/23 17:32:28 by mgavorni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME		=	#
+NAME		=	Harl
 CC			=	c++
 CFLAGS		=	-Wall -Wextra -Werror -std=c++98
 
@@ -19,7 +19,9 @@ SRC_DIR		=	src/
 OBJ_DIR		=	obj/
 INC_DIR		=	inc/
 
-SRC_FILES	=	#
+SRC_FILES	=	main.cpp \
+				Harl.cpp
+
 
 SRC			=	$(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ			=	$(addprefix $(OBJ_DIR), $(SRC_FILES:.cpp=.o))
@@ -28,7 +30,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
-	@echo "Build successful"
+	@echo "$(NAME) Built Successfully";
 
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.cpp
 	@mkdir -p $(dir $@)
@@ -37,15 +39,15 @@ $(OBJ_DIR)%.o:	$(SRC_DIR)%.cpp
 clean:
 	@if [ -d "$(OBJ_DIR)" ]; then \
 	rm -rf $(OBJ_DIR); \
-	echo "Clean"; else \
+	echo "Clean objects $(OBJ_DIR)"; else \
 	echo "Nothing to Clean"; \
 	fi;
 
 fclean: clean
 	@if [ -f "$(NAME)" ]; then \
 	rm -f $(NAME); \
-	echo "Deleted $(NAME)"; else \
-	echo "No binary found"; \
+	echo "$(NAME) Deleted Successfully"; else \
+	echo "Nothing to Delete"; \
 	fi;
 
 re: fclean all
