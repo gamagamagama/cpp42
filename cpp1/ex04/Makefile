@@ -6,7 +6,7 @@
 #    By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/19 15:21:18 by mgavorni          #+#    #+#              #
-#    Updated: 2025/11/23 17:32:22 by mgavorni         ###   ########.fr        #
+#    Updated: 2025/11/24 19:51:43 by mgavorni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,13 @@ fclean: clean
 	echo "$(NAME) Deleted Successfully"; else \
 	echo "Nothing to Delete"; \
 	fi;
+	@for f in *.replace; do \
+        if [ -e "$$f" ]; then \
+            base="$${f%.replace}"; \
+            printf 'Removing: %s and %s\n' "$$f" "$$base"; \
+            rm -f "$$f" "$$base"; \
+    fi; \
+	done
 
 re: fclean all
 

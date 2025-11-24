@@ -6,7 +6,7 @@
 /*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 18:31:27 by mgavorni          #+#    #+#             */
-/*   Updated: 2025/11/19 16:28:25 by mgavorni         ###   ########.fr       */
+/*   Updated: 2025/11/24 19:35:59 by mgavorni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void handleError(int type) {
         std::cout << "Error: technically valid but comon please you try to replace nothing with nothing so i will copy everything" << std::endl;
     if(type == 6)
         std::cout << "Error: you fucked up so hard that i can't even handle it so pleas do the world a favor and DIE!!!, Thank you" << std::endl;
+    if(type == 7)
+        std::cout << "File is empty" << std::endl;
     return;
     
 }
@@ -77,6 +79,9 @@ void openFile(std::string fileName, std::string s1, std::string s2)
     else if(!filein.is_open() && (!s1.length() || !s2.length())) {
         handleError(6);
         return;
+    }
+    else if(filein.is_open() && std::ifstream::traits_type::eof() == filein.peek()) {
+        handleError(7);
     }
     createNewFile(fileName, s1, s2);
     filein.close();
