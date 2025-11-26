@@ -6,7 +6,7 @@
 #    By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/19 15:21:18 by mgavorni          #+#    #+#              #
-#    Updated: 2025/11/23 17:32:05 by mgavorni         ###   ########.fr        #
+#    Updated: 2025/11/25 13:49:12 by mgavorni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.cpp
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -I $(INC_DIR) -o $@ -c $<
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
 	@if [ -d "$(OBJ_DIR)" ]; then \

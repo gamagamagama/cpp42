@@ -1,4 +1,4 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
@@ -6,30 +6,50 @@
 /*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 15:17:11 by mgavorni          #+#    #+#             */
-/*   Updated: 2025/11/14 15:23:35 by mgavorni         ###   ########.fr       */
+/*   Updated: 2025/11/26 16:44:27 by mgavorni         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "Fixed.hpp"
+#include "Colors.hpp"
 
-Fixed::Fixed(void)
+//[COMMENT OUT]
+int Fixed::next_id_ = 0;
+
+Fixed::Fixed(void) :  ctor_(Default) //[COMMENT OUT]
 {
-    std::cout << "Default constructor called" << std::endl;
+    id_ = next_id_++; //[COMMENT OUT]
+    std::cout << RED << "ID: " << id_ << std::endl << "Default constructor called"<< RESET << std::endl;
+    std::cout << std::endl;
     this->_fixedPointValue = 0;
 }
-Fixed::Fixed(const Fixed &other)
+
+Fixed::Fixed(const Fixed &other) : ctor_(Copy) //[COMMENT OUT]
 {
-    std::cout << "Copy constructor called" << std::endl;
-    *this = other;
+    id_ = next_id_++; //[COMMENT OUT]
+    std::cout << YELLOW << "ID: " << id_ << std::endl << "Copy constructor called"<< RESET << std::endl;
+    std::cout << std::endl;
+    this->_fixedPointValue = other._fixedPointValue;
 }
+
 Fixed::~Fixed(void)
 {
-    std::cout << "Destructor called" << std::endl;
+    std::cout << MAGENTA << "Destructor called"<< RESET << std::endl;
+    
+    
+    //[COMMENT OUT]
+    switch (ctor_) {
+            case Default:   std::cout << RED << "ID: " << id_ << std::endl << "Default Constructor\n"<< RESET << std::endl; break;
+            case Copy:   std::cout << YELLOW << "ID: " << id_ << std::endl << "Copy Constructor\n" << RESET << std::endl; break;
+            case INT:   std::cout << CYAN << "ID: " << id_ << std::endl << "Int Constructor\n" << RESET << std::endl; break;
+            case FLOAT:   std::cout << BLUE << "ID: " << id_ << std::endl << "Float Constructor\n" << RESET << std::endl; break;
+        }
 }
 
 Fixed &Fixed::operator=(const Fixed &other)
 {
-    std::cout << "Copy assignment operator called" << std::endl;
+    std::cout << GREEN <<"Copy assignment operator called"<< RESET << std::endl;
+    std::cout << std::endl;
     this->_fixedPointValue = other.getRawBits();
     return (*this);
 }
@@ -37,25 +57,33 @@ Fixed &Fixed::operator=(const Fixed &other)
 int Fixed::getRawBits(void) const
 {
     std::cout << "getRawBits member function called" << std::endl;
+    std::cout << std::endl;
     return (this->_fixedPointValue);
 }
 
 void Fixed::setRawBits(int const raw)
 {
     std::cout << "setRawBits member function called" << std::endl;
+    std::cout << std::endl;
     this->_fixedPointValue = raw;
 }
 
 Fixed::Fixed(const int num)
 {
-    std::cout << "Int constructor called" << std::endl;
+    id_ = next_id_++; //[COMMENT OUT]
+    std::cout << CYAN << "ID: " << id_ << std::endl << "Int constructor called"<< RESET << std::endl;
+    std::cout << std::endl;
     this->_fixedPointValue = num << Fixed::_fractionalBits;
+    this->ctor_ = INT; //[COMMENT OUT]
 }
 
 Fixed::Fixed(const float num)
 {
-    std::cout << "Float constructor called" << std::endl;
+    id_ = next_id_++; //[COMMENT OUT]
+    std::cout << BLUE << "ID: " << id_ << std::endl << "Float constructor called"<< RESET << std::endl;
+    std::cout << std::endl;
     this->_fixedPointValue = roundf(num * (1 << Fixed::_fractionalBits));
+    this->ctor_ = FLOAT; //[COMMENT OUT]
 }
 
 float Fixed::toFloat(void) const
