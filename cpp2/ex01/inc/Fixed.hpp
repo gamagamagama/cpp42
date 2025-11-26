@@ -1,4 +1,4 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
@@ -6,9 +6,9 @@
 /*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 15:08:35 by mgavorni          #+#    #+#             */
-/*   Updated: 2025/11/14 15:17:07 by mgavorni         ###   ########.fr       */
+/*   Updated: 2025/11/26 16:31:19 by mgavorni         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #ifndef FIXED_HPP
 #define FIXED_HPP
@@ -19,6 +19,15 @@
 
 class Fixed {
     public:
+        //[COMMENT OUT]
+        enum Ctor {
+            Default = 0,
+            Copy,
+            INT,
+            FLOAT
+        };
+
+    
         Fixed(void);
         Fixed(const Fixed &other);
         ~Fixed(void);
@@ -34,6 +43,11 @@ class Fixed {
     private:
         int _fixedPointValue;
         static const int _fractionalBits = 8;
+        
+        //[COMMENT OUT]
+        Ctor ctor_;
+        int id_;
+        static int next_id_;
         
 };
 
