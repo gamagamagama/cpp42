@@ -12,7 +12,7 @@
 #define WHITE   "\033[37m"      /* White */
 #define BBLACK   "\033[1m\033[30m"      /* Bold Black */
 #define BRED     "\033[1m\033[31m"      /* Bold Red */
-#define BREEN   "\033[1m\033[32m"      /* Bold Green */
+#define BGREEN   "\033[1m\033[32m"      /* Bold Green */
 #define BYELLOW  "\033[1m\033[33m"      /* Bold Yellow */
 #define BBLUE    "\033[1m\033[34m"      /* Bold Blue */
 #define BMAGENTA "\033[1m\033[35m"      /* Bold Magenta */

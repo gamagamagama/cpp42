@@ -6,7 +6,7 @@
 /*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 14:32:13 by mgavorni          #+#    #+#             */
-/*   Updated: 2025/11/26 14:57:58 by mgavorni         ###   ########.fr       */
+/*   Updated: 2025/11/26 16:23:23 by mgavorni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,11 @@
 
 class Fixed {
     public:
-        //DELETE AFTER
+        
+        //[COMMENT OUT]
         enum Ctor {
             Default = 0,
-            Copy,
-            CopyAssignment,
-            MemberFunction1,
-            MemberFunction2
+            Copy
         };
     
         Fixed(void);
@@ -36,7 +34,8 @@ class Fixed {
     private:
         int _fixedPointValue;
         static const int _fractionalBits = 8;
-        //DELETE AFTER
+        
+        //[COMMENT OUT]
         Ctor ctor_;
 };
 
