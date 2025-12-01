@@ -6,7 +6,7 @@
 /*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 15:17:11 by mgavorni          #+#    #+#             */
-/*   Updated: 2025/11/27 19:54:00 by mgavorni         ###   ########.fr       */
+/*   Updated: 2025/12/01 15:03:54 by mgavorni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include "Colors.hpp"
 
 //[COMMENT OUT]
-int Fixed::next_id_ = 0;
+//int Fixed::next_id_ = 0;
 
-Fixed::Fixed(void) :  ctor_(Default) //[COMMENT OUT]
+Fixed::Fixed(void) //:  ctor_(Default) //[COMMENT OUT]
 {
     // id_ = next_id_++; //[COMMENT OUT]
     // std::cout << RED << "ID: " << id_ << std::endl << "Default constructor called"<< RESET << std::endl;
@@ -24,7 +24,7 @@ Fixed::Fixed(void) :  ctor_(Default) //[COMMENT OUT]
     this->_fixedPointValue = 0;
 }
 
-Fixed::Fixed(const Fixed &other) : ctor_(Copy) //[COMMENT OUT]
+Fixed::Fixed(const Fixed &other) //: ctor_(Copy) //[COMMENT OUT]
 {
     // id_ = next_id_++; //[COMMENT OUT]
     // std::cout << YELLOW << "ID: " << id_ << std::endl << "Copy constructor called"<< RESET << std::endl;
@@ -78,7 +78,7 @@ Fixed::Fixed(const int num)
     // std::cout << CYAN << "ID: " << id_ << std::endl << "Int constructor called"<< RESET << std::endl;
     // std::cout << std::endl;
     this->_fixedPointValue = num << Fixed::_fractionalBits;
-    this->ctor_ = INT; //[COMMENT OUT]
+    // this->ctor_ = INT; //[COMMENT OUT]
 }
 
 Fixed::Fixed(const float num)
@@ -87,7 +87,7 @@ Fixed::Fixed(const float num)
     // std::cout << BLUE << "ID: " << id_ << std::endl << "Float constructor called"<< RESET << std::endl;
     // std::cout << std::endl;
     this->_fixedPointValue = roundf(num * (1 << Fixed::_fractionalBits));
-    this->ctor_ = FLOAT; //[COMMENT OUT]
+    // this->ctor_ = FLOAT; //[COMMENT OUT]
 }
 
 float Fixed::toFloat(void) const

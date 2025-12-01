@@ -6,7 +6,7 @@
 /*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 15:08:35 by mgavorni          #+#    #+#             */
-/*   Updated: 2025/11/26 18:14:29 by mgavorni         ###   ########.fr       */
+/*   Updated: 2025/12/01 15:02:39 by mgavorni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@
 class Fixed {
     public:
         //[COMMENT OUT]
-        enum Ctor {
-            Default = 0,
-            Copy,
-            INT,
-            FLOAT
-        };
+        // enum Ctor {
+        //     Default = 0,
+        //     Copy,
+        //     INT,
+        //     FLOAT
+        // };
 
 
     
@@ -67,10 +67,10 @@ class Fixed {
         int _fixedPointValue;
         static const int _fractionalBits = 8;
 
-        //[COMMENT OUT]
-        Ctor ctor_;
-        int id_;
-        static int next_id_;
+        // //[COMMENT OUT]
+        // Ctor ctor_;
+        // int id_;
+        // static int next_id_;
         
 };
 std::ostream &operator<<(std::ostream &o, const Fixed &rightside);

@@ -1,12 +1,49 @@
 #include "Fixed.hpp"
 #include "Point.hpp"
+#include <vector>
+#include <algorithm>
+#include <limits>
+
+// bool bsp( Point const a, Point const b, Point const c, Point const point)
+// {
+// 	Fixed	cx_ax(c.getX() - a.getX());
+// 	Fixed	cy_ay(c.getY() - a.getY());
+// 	Fixed	bx_ax(b.getX() - a.getX());
+// 	Fixed	by_ay(b.getY() - a.getY());
+// 	Fixed	w1( (a.getX() * cy_ay.toFloat() + (point.getY() - a.getY()) * cx_ax.toFloat() - point.getX() * cy_ay.toFloat()) /
+// 				(by_ay.toFloat() * cx_ax.toFloat() - bx_ax.toFloat() * cy_ay.toFloat()));
+// 	Fixed	w2( (point.getY() - a.getY() - w1.toFloat() * by_ay.toFloat()) /
+// 				cy_ay.toFloat());
+// 	//std::cout << "w1 = " << w1 << std::endl;
+// 	//std::cout << "w2 = " << w2 << std::endl;
+// 	//std::cout << "w1 + w2 = " << w1 + w2 << std::endl;
+// 	if (w1 >= 0 && w1 >= 0 && (w1 + w2) <= 1)
+// 		return (true);
+// 	return (false);
+// }
+
+
+// bool bsp(Point const a, Point const b, Point const c, Point const point) {
+//     Fixed areaABCval = areaABC(a, b, c).toFloat();
+//     Fixed areaPABval = areaPAB(a, b, point).toFloat();
+//     Fixed areaPBCval = areaPBC(b, c, point).toFloat();
+//     Fixed areaPCAval = areaPCA(a, c, point).toFloat();
+//     std::cout << "area " << areaPABval + areaPBCval + areaPCAval << std::endl;
+//     return ((areaABCval == (areaPABval + areaPBCval + areaPCAval)) ? true : false);
+// }
 
 bool bsp(Point const a, Point const b, Point const c, Point const point) {
-    Fixed areaABCval = areaABC(a, b, c);
-    Fixed areaPABval = areaPAB(a, b, point);
-    Fixed areaPBCval = areaPBC(b, c, point);
-    Fixed areaPCAval = areaPCA(a, c, point);
-    return ((areaABCval == (areaPABval + areaPBCval + areaPCAval)) ? true : false);
+    Fixed A  = areaABC(a,b,c).toFloat();
+    Fixed A1 = areaPAB(a,b,point).toFloat();
+    Fixed A2 = areaPBC(b,c,point).toFloat();
+    Fixed A3 = areaPCA(a,c,point).toFloat();
+    Fixed sum = A1 + A2 + A3;
+    Fixed eps = std::numeric_limits<Fixed>::epsilon().toFloat();
+    Fixed lol = A - sum;
+    std::cout <<"A - sum = " << lol << std::endl;
+    std::cout <<"A = "<< A << std::endl;
+    std::cout <<"eps = "<< eps << std::endl;
+    return (lol < eps) && (A > eps);
 }
 
 void area_print(Point const a, Point const b, Point const c, Point const point) {
@@ -27,32 +64,32 @@ void area_print(Point const a, Point const b, Point const c, Point const point) 
 }
 
 Fixed areaABC(Point const a, Point const b, Point const c) {
-    Fixed area = (a.getX() * (b.getY() - c.getY())) 
-            + (b.getX() * (c.getY() - a.getY())) 
-            + (c.getX() * (a.getY() - b.getY()));
-    return(((area < 0) ? area * Fixed(-1) : area));
-
+    Fixed area = (a.getX().toFloat() * (b.getY().toFloat() - c.getY().toFloat()))
+                + (b.getX().toFloat() * (c.getY().toFloat() - a.getY().toFloat()))
+                + (c.getX().toFloat() * (a.getY().toFloat() - b.getY().toFloat()));
+    return (area < Fixed(0) ? area * Fixed(-1) : area);
 }
 
+
 Fixed areaPAB(Point const a, Point const b, Point const point) {
-    Fixed area = (point.getX() * (b.getY() - a.getY())) 
-            + (b.getX() * (a.getY() - point.getY())) 
-            + (a.getX() * (point.getY() - b.getY()));
+    Fixed area = (point.getX().toFloat() * (b.getY().toFloat() - a.getY().toFloat())) 
+            + (b.getX().toFloat() * (a.getY().toFloat() - point.getY().toFloat())) 
+            + (a.getX().toFloat() * (point.getY().toFloat() - b.getY().toFloat()));
     return((area < 0) ? area * Fixed(-1) : area);
 }
 
 Fixed areaPBC(Point const b, Point const c, Point const point) {
-    Fixed area = (point.getX() * ((c.getY() - b.getY()))) 
-            + (c.getX() * ((b.getY() - point.getY()))) 
-            + (b.getX() * ((point.getY() - c.getY())));
+    Fixed area = (point.getX().toFloat() * ((c.getY().toFloat() - b.getY().toFloat()))) 
+            + (c.getX().toFloat() * ((b.getY().toFloat() - point.getY().toFloat()))) 
+            + (b.getX().toFloat() * ((point.getY().toFloat() - c.getY().toFloat())));
     return((area < 0) ? area * Fixed(-1) : area);
 }
 
 Fixed areaPCA(Point const a, Point const c, Point const point) {
-    Fixed area = (point.getX() * (a.getY() - c.getY()))
-            + (c.getX() * (c.getY() - point.getY()))
-            + (a.getX() * (point.getY() - c.getY()));
-    return((area < 0) ? area * Fixed(-1) : area);
+    Fixed area = (a.getX().toFloat() * (c.getY().toFloat() - point.getY().toFloat()))
+                + (c.getX().toFloat() * (point.getY().toFloat() - a.getY().toFloat()))
+                + (point.getX().toFloat() * (a.getY().toFloat() - c.getY().toFloat()));
+    return (area < Fixed(0) ? area * Fixed(-1) : area);
 }
     //AREA ABC
     //ax * (by - cy)
@@ -73,3 +110,11 @@ Fixed areaPCA(Point const a, Point const c, Point const point) {
     //px * (ay - cy)
     //cx * (cy - py)
     //ax * (py - cy)
+
+
+
+
+// Simple ASCII visualizer for four points (A,B,C,P).
+// cols/rows control resolution of the printed grid.
+
+
