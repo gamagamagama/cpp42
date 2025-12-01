@@ -6,7 +6,7 @@
 #    By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/19 15:21:18 by mgavorni          #+#    #+#              #
-#    Updated: 2025/11/23 17:32:43 by mgavorni         ###   ########.fr        #
+#    Updated: 2025/11/27 19:51:50 by mgavorni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,8 @@ OBJ_DIR		=	obj/
 INC_DIR		=	inc/
 
 SRC_FILES	=	Fixed.cpp \
+				Point.cpp \
+				bsp.cpp \
 				main.cpp
 
 

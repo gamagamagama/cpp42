@@ -3,7 +3,7 @@
 
 #include "Fixed.hpp"
 
-class Point : public Fixed
+class Point
 {
     public:
         Point();
@@ -14,9 +14,16 @@ class Point : public Fixed
         Fixed getY() const;
         ~Point();
     private:
-        Fixed::Ctor ctor_;
-        Fixed::_fixedPointValue _x;
-        Fixed::_fixedPointValue _y;
+        Fixed _x;
+        Fixed _y;
+        
+        
 };
+bool bsp(Point const a, Point const b, Point const c, Point const point);
+Fixed areaABC(Point const a, Point const b, Point const c);
+Fixed areaPAB( Point const a, Point const b, Point const point);
+Fixed areaPBC( Point const b, Point const c, Point const point);
+Fixed areaPCA( Point const a, Point const c, Point const point);
+void area_print(Point const a, Point const b, Point const c, Point const point);
 
 #endif
