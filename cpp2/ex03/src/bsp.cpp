@@ -43,7 +43,8 @@ bool bsp(Point const a, Point const b, Point const c, Point const point) {
     std::cout <<"A = "<< A << std::endl;
     std::cout << "sum= " << sum << std::endl;
     std::cout <<"A - sum = " << lol << std::endl;
-    bool result = (A == (A1 + A2 + A3) && A1 > 0 && A2 > 0 && A3 > 0) ? true : false;
+    
+    bool result = (lol >= 0 && A >= (A1 + A2 + A3) && A1 > 0 && A2 > 0 && A3 > 0) ? true : false;
     return (result);
 }
 
