@@ -38,12 +38,13 @@ bool bsp(Point const a, Point const b, Point const c, Point const point) {
     Fixed A2 = areaPBC(b,c,point).toFloat();
     Fixed A3 = areaPCA(a,c,point).toFloat();
     Fixed sum = A1 + A2 + A3;
-    Fixed eps = std::numeric_limits<Fixed>::epsilon().toFloat();
     Fixed lol = A - sum;
-    std::cout <<"A - sum = " << lol << std::endl;
+
     std::cout <<"A = "<< A << std::endl;
-    std::cout <<"eps = "<< eps << std::endl;
-    return (lol < eps) && (A > eps);
+    std::cout << "sum= " << sum << std::endl;
+    std::cout <<"A - sum = " << lol << std::endl;
+    bool result = (A == (A1 + A2 + A3) && A1 > 0 && A2 > 0 && A3 > 0) ? true : false;
+    return (result);
 }
 
 void area_print(Point const a, Point const b, Point const c, Point const point) {
