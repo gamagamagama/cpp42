@@ -1,50 +1,25 @@
 #include "Fixed.hpp"
 #include "Point.hpp"
+#include "Colors.hpp"
 #include <vector>
 #include <algorithm>
 #include <limits>
 
-// bool bsp( Point const a, Point const b, Point const c, Point const point)
-// {
-// 	Fixed	cx_ax(c.getX() - a.getX());
-// 	Fixed	cy_ay(c.getY() - a.getY());
-// 	Fixed	bx_ax(b.getX() - a.getX());
-// 	Fixed	by_ay(b.getY() - a.getY());
-// 	Fixed	w1( (a.getX() * cy_ay.toFloat() + (point.getY() - a.getY()) * cx_ax.toFloat() - point.getX() * cy_ay.toFloat()) /
-// 				(by_ay.toFloat() * cx_ax.toFloat() - bx_ax.toFloat() * cy_ay.toFloat()));
-// 	Fixed	w2( (point.getY() - a.getY() - w1.toFloat() * by_ay.toFloat()) /
-// 				cy_ay.toFloat());
-// 	//std::cout << "w1 = " << w1 << std::endl;
-// 	//std::cout << "w2 = " << w2 << std::endl;
-// 	//std::cout << "w1 + w2 = " << w1 + w2 << std::endl;
-// 	if (w1 >= 0 && w1 >= 0 && (w1 + w2) <= 1)
-// 		return (true);
-// 	return (false);
-// }
-
-
-// bool bsp(Point const a, Point const b, Point const c, Point const point) {
-//     Fixed areaABCval = areaABC(a, b, c).toFloat();
-//     Fixed areaPABval = areaPAB(a, b, point).toFloat();
-//     Fixed areaPBCval = areaPBC(b, c, point).toFloat();
-//     Fixed areaPCAval = areaPCA(a, c, point).toFloat();
-//     std::cout << "area " << areaPABval + areaPBCval + areaPCAval << std::endl;
-//     return ((areaABCval == (areaPABval + areaPBCval + areaPCAval)) ? true : false);
-// }
 
 bool bsp(Point const a, Point const b, Point const c, Point const point) {
     Fixed A  = areaABC(a,b,c).toFloat();
     Fixed A1 = areaPAB(a,b,point).toFloat();
     Fixed A2 = areaPBC(b,c,point).toFloat();
     Fixed A3 = areaPCA(a,c,point).toFloat();
-    Fixed sum = A1 + A2 + A3;
+    Fixed floatMin = 0.00390625f;
+    Fixed sum = A1 + A2 + A3 - floatMin;
     Fixed lol = A - sum;
-
     std::cout <<"A = "<< A << std::endl;
     std::cout << "sum= " << sum << std::endl;
     std::cout <<"A - sum = " << lol << std::endl;
-    
-    bool result = (lol >= 0 && A >= (A1 + A2 + A3) && A1 > 0 && A2 > 0 && A3 > 0) ? true : false;
+    std::cout << std::endl;
+    bool result = (lol >= 0 && A >= sum && A1 > 0 && A2 > 0 && A3 > 0) ? true : false;
+    std::cout <<RED<< "Result: " << result <<RESET<< std::endl;
     return (result);
 }
 
@@ -61,7 +36,7 @@ void area_print(Point const a, Point const b, Point const c, Point const point) 
     std::cout << "AreaPBC: " << areaPBC(b, c, point) << std::endl;
     std::cout << "AreaPCA: " << areaPCA(a, c, point) << std::endl;
     std::cout << std::endl;
-    std::cout << "sum:"<< bsp(a, b, c, point) <<std::endl;
+    bsp(a, b, c, point);
     
 }
 
@@ -109,14 +84,9 @@ Fixed areaPCA(Point const a, Point const c, Point const point) {
     //bx * (py - cy)
 
     //AREA PCA
+    //ax * (cy - py)
+    //cx * (py - ay)
     //px * (ay - cy)
-    //cx * (cy - py)
-    //ax * (py - cy)
 
-
-
-
-// Simple ASCII visualizer for four points (A,B,C,P).
-// cols/rows control resolution of the printed grid.
 
 
