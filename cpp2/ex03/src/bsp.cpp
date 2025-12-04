@@ -14,12 +14,15 @@ bool bsp(Point const a, Point const b, Point const c, Point const point) {
     Fixed floatMin = 0.00390625f;
     Fixed sum = A1 + A2 + A3 - floatMin;
     Fixed lol = A - sum;
-    std::cout <<"A = "<< A << std::endl;
-    std::cout << "sum= " << sum << std::endl;
-    std::cout <<"A - sum = " << lol << std::endl;
-    std::cout << std::endl;
+    // std::cout << "A: " << A << std::endl;
+    // std::cout << "A1: " << A1 << std::endl;
+    // std::cout << "A2: " << A2 << std::endl;
+    // std::cout << "A3: " << A3 << std::endl;
+    // std::cout << "sum: " << sum << std::endl;
+    // std::cout << "lol: " << lol << std::endl;
+    // std::cout << std::endl;
     bool result = (lol >= 0 && A >= sum && A1 > 0 && A2 > 0 && A3 > 0) ? true : false;
-    std::cout <<RED<< "Result: " << result <<RESET<< std::endl;
+    // std::cout <<RED<< "Result: " << result <<RESET<< std::endl;
     return (result);
 }
 
@@ -68,6 +71,9 @@ Fixed areaPCA(Point const a, Point const c, Point const point) {
                 + (point.getX().toFloat() * (a.getY().toFloat() - c.getY().toFloat()));
     return (area < Fixed(0) ? area * Fixed(-1) : area);
 }
+
+
+// DOT PRODUCT
     //AREA ABC
     //ax * (by - cy)
     //bx * (cy - ay)
