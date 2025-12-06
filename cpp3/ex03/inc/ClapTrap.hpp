@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/18 15:52:00 by mgavorni          #+#    #+#             */
-/*   Updated: 2025/12/05 14:49:53 by mgavorni         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef CLAPTRAP_HPP
 # define CLAPTRAP_HPP
 
@@ -26,11 +14,14 @@ class ClapTrap
         ClapTrap &operator=(const ClapTrap &copy);
         virtual ~ClapTrap();
 
-        
         virtual void attack(const std::string& target);
         void takeDamage(unsigned int amount);
         void beRepaired(unsigned int amount);
         void getStats(const char *color);
+        
+       int getHitPoints() const;
+       int getEnergyPoints() const;
+       int getAttackDamage() const;
     
     protected:
         std::string _name;

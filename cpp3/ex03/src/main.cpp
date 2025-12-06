@@ -6,7 +6,7 @@
 /*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 16:11:27 by mgavorni          #+#    #+#             */
-/*   Updated: 2025/12/05 15:53:16 by mgavorni         ###   ########.fr       */
+/*   Updated: 2025/12/06 16:51:30 by mgavorni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int main() {
 		frag.highFivesGuys();
 		std::cout<<BRED<<"============================"<< RESET << std::endl;
 		std::cout<<std::endl;
-
 		DiamondTrap diamond("Diamond");
 		diamond.getStats(BYELLOW);
 		diamond.whoAmI();
@@ -59,6 +58,20 @@ int main() {
 		diamond.guardGate();
 		diamond.highFivesGuys();
 	}
+
+	// {
+	// 	ClapTrap    clap("Clappy");
+	// 	clap.getStats(BGREEN);
+	
+	// 	ScavTrap    scav("Scavvy");
+	// 	scav.getStats(BBLUE);
+	
+	// 	FragTrap    frag("Fraggy");
+	// 	frag.getStats(BRED);
+	
+	// 	DiamondTrap diamond("Diamond");
+	// 	diamond.getStats(BYELLOW);
+	// }
     return 0;
 }
 

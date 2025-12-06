@@ -1,4 +1,6 @@
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 #include "Colors.hpp"
 
 ClapTrap::ClapTrap() {
@@ -96,3 +98,16 @@ void    ClapTrap::getStats(const char *color = RESET) {
     std::cout <<"====================" << RESET << std::endl;
     std::cout << std::endl;
 }
+
+int ClapTrap::getHitPoints() const {
+    return _hitPoints;
+}
+
+int ClapTrap::getEnergyPoints() const {
+    return _energyPoints;
+}
+
+int ClapTrap::getAttackDamage() const {
+    return _attackDamage;
+}
+

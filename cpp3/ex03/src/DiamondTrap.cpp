@@ -8,13 +8,15 @@ DiamondTrap::DiamondTrap()
 
 DiamondTrap::DiamondTrap(const std::string &name): ClapTrap(name + "_clap_name"), FragTrap(name), ScavTrap(name), _name(name)
 {
-    std::cout<< "Fragtrap::_hitpoints"<< FragTrap::_hitPoints << std::endl;
-
-    this->_name = name;
     std::cout << "(constructor) DiamondTrap constructor called" << std::endl;
-    this->_hitPoints   =  FragTrap::_hitPoints; 
-    this->_energyPoints=  ScavTrap::_energyPoints;
-    this->_attackDamage=  FragTrap::_attackDamage;
+    this->_name = name;
+
+    FragTrap tmpFrag(name);
+    ScavTrap tmpScav(name);
+
+    this->_hitPoints    = tmpFrag.getHitPoints();
+    this->_energyPoints = tmpScav.getEnergyPoints();
+    this->_attackDamage = tmpFrag.getAttackDamage();
 
 }
 
