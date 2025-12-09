@@ -1,28 +1,33 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   WrongCat.cpp                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/19 10:50:00 by mgavorni          #+#    #+#             */
-/*   Updated: 2025/11/19 10:58:43 by mgavorni         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "WrongCat.hpp"
+#include "Colors.hpp"
 
-WrongCat::WrongCat(): WrongAnimal("WrongCat")
+
+WrongCat::WrongCat() : WrongAnimal()
 {
-    std::cout << "WrongCat constructor called" << std::endl;
+    std::cout << "WrongCat default constructor called\n";
+    this->_type = "WrongCat";
 }
+
+WrongCat::WrongCat(const WrongCat& origin) : WrongAnimal(origin)
+{
+    std::cout << "WrongCat copy constructor called." << std::endl;
+};
+
+WrongCat& WrongCat::operator =(const WrongCat& origin)
+{
+    std::cout << "WrongCat copy assignment operator called." << std::endl;
+    if (this != &origin)
+        WrongAnimal::operator =(origin);
+    return *this;
+};
 
 WrongCat::~WrongCat()
 {
-    std::cout << "WrongCat destructor called" << std::endl;
+    std::cout << "WrongCat destructor called\n";
 }
+
 
 void WrongCat::makeSound() const
 {
-    std::cout << "WrongCat meow" << std::endl;
+    std::cout << BGRAY <<"WrongCat meow"<< RESET << std::endl;
 }
