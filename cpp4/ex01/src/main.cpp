@@ -6,7 +6,7 @@
 /*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 10:31:05 by mgavorni          #+#    #+#             */
-/*   Updated: 2025/12/15 18:57:00 by mgavorni         ###   ########.fr       */
+/*   Updated: 2025/12/15 18:59:45 by mgavorni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,10 @@ int main()
     std::cout << "dogy2 :" << &dogy2 << std::endl;
     std::cout << "dogy2 idea: " << dogy2.getBrain()->getIdeas(0) << std::endl;
 
-    std::cout << "Cat idea: " << caty.getBrain()->getIdeas(0) << std::endl;
-    std::cout << "Dog idea: " << doggy.getBrain()->getIdeas(0) << std::endl;
-    std::cout << "Cat idea: " << caty.getBrain()->getIdeas(1) << std::endl;
-    std::cout << "Dog idea: " << doggy.getBrain()->getIdeas(1) << std::endl;
+    std::cout << "Cat idea:(should be none bcs of index set 0 for doggy) " << caty.getBrain()->getIdeas(0) << std::endl;
+    std::cout << "Dog idea:(should be right) " << doggy.getBrain()->getIdeas(0) << std::endl;
+    std::cout << "Cat idea:(should be right) " << caty.getBrain()->getIdeas(1) << std::endl;
+    std::cout << "Dog idea:(should be none bcs of index set 1 for caty) " << doggy.getBrain()->getIdeas(1) << std::endl;
 
     return 0;
 }
