@@ -1,39 +1,53 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/19 10:32:44 by mgavorni          #+#    #+#             */
-/*   Updated: 2025/11/19 10:42:02 by mgavorni         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "Animal.hpp"
+#include "Colors.hpp"
 
-Animal::Animal()
+Animal::Animal() : _type("Animal")
 {
-    std::cout << "Animal default constructor called" << std::endl;
+    //std::cout <<BBLUE << "Animal default constructor called"<< RESET << std::endl;
+}
+Animal::Animal(const Animal &copy) : _type(copy._type)
+{
+    //std::cout <<BBLUE << "Animal copy constructor called"<< RESET << std::endl;
+    *this = copy;
+}
+
+Animal &Animal::operator=(const Animal &other)
+{
+    //std::cout<<BBLUE << "Animal copy assignment operator called"<< RESET << std::endl;
+    if (this != &other)
+    {
+        this->_type = other._type;
+    }
+    return *this;
 }
 
 Animal::~Animal()
 {
-    std::cout << "Animal destructor called" << std::endl;
+    //std::cout<<BBLUE << "Animal destructor called"<< RESET << std::endl;
 }
 
 Animal::Animal(std::string type): _type(type)
 {
-    std::cout << "Animal type constructor called" << std::endl;
+    //std::cout<<BBLUE << "Animal type constructor called"<< RESET << std::endl;
+    this->_type = type;
 }
 
 std::string Animal::getType() const
 {
-    std::cout << "Animal getType: "<<this->_type<<" called" << std::endl;
+    std::string color = WHITE;
+    (this->_type == "Dog") ? color = GREEN :"";
+    (this->_type == "Cat") ? color = RED :"";
+    (this->_type == "WrongCat") ? color = BGRAY : "";
+    std::cout<<BBLUE << "Animal getType: "<<color<<this->_type<<" called"<< RESET << std::endl;
     return this->_type;
 }
 
 void Animal::makeSound() const
 {
-    std::cout << "wecome to the jungle" << std::endl;
+    std::cout<<BBLUE << "wecome to the jungle"<< RESET << std::endl;
 }
+
+Brain* Animal::getBrain() const {
+
+    return NULL;
+};

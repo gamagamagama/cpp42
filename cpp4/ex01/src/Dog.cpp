@@ -1,29 +1,12 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/19 10:39:11 by mgavorni          #+#    #+#             */
-/*   Updated: 2025/11/19 13:29:55 by mgavorni         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "Dog.hpp"
 
-Dog::Dog(): Animal("Dog"), _brain(new Brain())
+Dog::Dog(): Animal::Animal(), _brain(new Brain())
 {
     std::cout << "Dog constructor called" << std::endl;
 }
-Dog::Dog(const Dog& other): Animal(other)
+Dog::Dog(const Dog& other): Animal(other), _brain(new Brain(*other._brain))
 {
     std::cout << "Dog copy constructor called" << std::endl;
-    if (other._brain)
-        _brain = new Brain(*other._brain);
-    else
-        _brain = new Brain();
-   this->_type = other._type;
 }
 Dog& Dog::operator=(const Dog& other)
 {
@@ -31,7 +14,7 @@ Dog& Dog::operator=(const Dog& other)
     if (this != &other)
     {
         delete _brain;
-        _brain = new Brain(*other._brain);
+        this->_brain = new Brain(*other._brain);
         this->_type = other._type;
     }
     return *this;
@@ -45,4 +28,8 @@ Dog::~Dog()
 
 void Dog::makeSound() const {
     std::cout << "Hav Hav God Power" << std::endl;
+}
+
+Brain* Dog::getBrain() const {
+    return _brain;
 }

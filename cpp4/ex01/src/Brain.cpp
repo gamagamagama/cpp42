@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Brain.cpp                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/19 13:05:18 by mgavorni          #+#    #+#             */
-/*   Updated: 2025/11/19 13:37:13 by mgavorni         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "Brain.hpp"
 
 Brain::Brain() {
@@ -33,3 +21,10 @@ Brain& Brain::operator=(const Brain& other) {
     return *this;
 }
 
+std::string Brain::getIdeas(int index) const {
+    return _ideas[index];
+}
+
+void Brain::setIdeas(std::string idea, int index) {
+    _ideas[index] = idea;
+}
