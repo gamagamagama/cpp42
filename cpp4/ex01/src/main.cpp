@@ -6,12 +6,11 @@
 /*   By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 10:31:05 by mgavorni          #+#    #+#             */
-/*   Updated: 2025/12/16 13:33:17 by mgavorni         ###   ########.fr       */
+/*   Updated: 2025/12/16 14:08:35 by mgavorni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
-#include "WrongCat.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
 #include "Colors.hpp"
@@ -43,7 +42,8 @@ int main()
     
     for (int i = 0; i < n; i++)
     {
-        std::cout << BMAGENTA <<"Animal address: " << animals[i] <<"(not shallow)" << RESET << std::endl;
+        std::cout << BMAGENTA <<"Animal address: " << animals[i] << RESET << std::endl;
+        //std::cout << animals[i]->getBrain() << std::endl;
         delete animals[i];
     }
 
@@ -53,16 +53,16 @@ int main()
     Dog doggy;
     Dog dogy2(doggy);
 
-    std::cout << DR_MAGENTA << "caty:" << &caty << "\n" << "doggy:"<< &doggy << "\n" << "dogy2:" << &dogy2 <<"\n" << "(should be all different...not shallow)"<< RESET << std::endl;
+    std::cout << DR_MAGENTA << "caty:" << &caty << "\n" << caty.getBrain() << "\n" << RESET << DR_BLUE << "doggy:"<< &doggy << "\n" << doggy.getBrain() << "\n" << RESET << DR_GREEN << "dogy2:" << &dogy2 <<"\n" << dogy2.getBrain() << "\n" << RESET << "\n(should be all different...not shallow...not same brain)"<< RESET << std::endl;
     doggy.getBrain()->setIdeas("This is doggy idea", 0);
     caty.getBrain()->setIdeas("This is caty idea", 1);
     dogy2.getBrain()->setIdeas("This is doggy2 idea", 0);
 
-    std::cout << BWHITE <<"dogy2 idea (should be right): \n" << dogy2.getBrain()->getIdeas(0) << std::endl;
+    std::cout << BWHITE <<"dogy2 idea (should be right): \n" << RESET << dogy2.getBrain()->getIdeas(0) << std::endl;
 
     std::cout << DR_WHITE <<"Cat idea:(should be none bcs of index set 0 for doggy) \n" << caty.getBrain()->getIdeas(0)<< RESET << std::endl;
-    std::cout << BWHITE <<"Dog idea:(should be right) \n"<< doggy.getBrain()->getIdeas(0)<< RESET << std::endl;
-    std::cout << BWHITE <<"Cat idea:(should be right) \n"<< caty.getBrain()->getIdeas(1) << RESET << std::endl;
+    std::cout << BWHITE <<"Dog idea:(should be right) \n" << RESET << doggy.getBrain()->getIdeas(0)<<std::endl;
+    std::cout << BWHITE <<"Cat idea:(should be right) \n" << RESET << caty.getBrain()->getIdeas(1) << std::endl;
     std::cout << DR_WHITE <<"Dog idea:(should be none bcs of index set 1 for caty) \n" << doggy.getBrain()->getIdeas(1)<< RESET << std::endl;
 
     return 0;

@@ -6,7 +6,7 @@
 #    By: mgavorni <mgavorni@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/19 15:21:18 by mgavorni          #+#    #+#              #
-#    Updated: 2025/11/23 17:33:23 by mgavorni         ###   ########.fr        #
+#    Updated: 2025/12/16 14:06:37 by mgavorni         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,6 @@ SRC_FILES	=	Animal.cpp \
 				Brain.cpp \
 				Cat.cpp \
 				Dog.cpp \
-				WrongAnimal.cpp \
-				WrongCat.cpp \
 				main.cpp
 
 SRC			=	$(addprefix $(SRC_DIR), $(SRC_FILES))

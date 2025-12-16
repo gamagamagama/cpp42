@@ -31,5 +31,6 @@ void Cat::makeSound() const {
 
 Brain* Cat::getBrain() const {
     std::cout<<DR_RED << "Cat getBrain called"<< RESET << std::endl;
-    return _brain;
+
+    return  _brain;
 }
