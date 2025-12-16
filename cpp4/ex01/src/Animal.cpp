@@ -3,17 +3,17 @@
 
 Animal::Animal() : _type("Animal")
 {
-    //std::cout <<BBLUE << "Animal default constructor called"<< RESET << std::endl;
+    //std::cout <<DR_BLUE << "Animal default constructor called"<< RESET << std::endl;
 }
 Animal::Animal(const Animal &copy) : _type(copy._type)
 {
-    //std::cout <<BBLUE << "Animal copy constructor called"<< RESET << std::endl;
+    //std::cout <<DR_BLUE << "Animal copy constructor called"<< RESET << std::endl;
     *this = copy;
 }
 
 Animal &Animal::operator=(const Animal &other)
 {
-    //std::cout<<BBLUE << "Animal copy assignment operator called"<< RESET << std::endl;
+    //std::cout<<DR_BLUE << "Animal copy assignment operator called"<< RESET << std::endl;
     if (this != &other)
     {
         this->_type = other._type;
@@ -23,12 +23,12 @@ Animal &Animal::operator=(const Animal &other)
 
 Animal::~Animal()
 {
-    //std::cout<<BBLUE << "Animal destructor called"<< RESET << std::endl;
+    //std::cout<<DR_BLUE << "Animal destructor called"<< RESET << std::endl;
 }
 
 Animal::Animal(std::string type): _type(type)
 {
-    //std::cout<<BBLUE << "Animal type constructor called"<< RESET << std::endl;
+    //std::cout<<DR_BLUE << "Animal type constructor called"<< RESET << std::endl;
     this->_type = type;
 }
 
@@ -44,10 +44,10 @@ std::string Animal::getType() const
 
 void Animal::makeSound() const
 {
-    std::cout<<BBLUE << "wecome to the jungle"<< RESET << std::endl;
+    std::cout<<BLUE << "wecome to the jungle"<< RESET << std::endl;
 }
 
-Brain* Animal::getBrain() const {
+// Brain* Animal::getBrain() const {
 
-    return NULL;
-};
+//     return NULL; //default brain call for animal in array
+// };

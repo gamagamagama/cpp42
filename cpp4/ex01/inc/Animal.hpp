@@ -19,7 +19,7 @@ class Animal
         virtual void makeSound() const;
         virtual std::string getType() const;
 
-        virtual Brain* getBrain() const;
+       // virtual Brain* getBrain() const; //for setting ideas when creating a new animal in array
 };
 
 #endif

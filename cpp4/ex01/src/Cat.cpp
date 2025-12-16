@@ -2,15 +2,15 @@
 #include "Colors.hpp"
 
 Cat::Cat() : Animal::Animal(), _brain(new Brain()) {
-    std::cout << RED <<"Cat default constructor"<< RESET << std::endl;
+    std::cout << DR_RED <<"Cat constructor called"<< RESET << std::endl;
 }
 Cat::Cat(const Cat& other) : Animal(other), _brain(new Brain(*other._brain)) {
     
-    std::cout<<RED << "Cat copy constructor"<< RESET << std::endl;
+    std::cout<<DR_RED << "Cat copy constructor"<< RESET << std::endl;
 }
 
 Cat& Cat::operator=(const Cat& other) {
-    std::cout<<RED << "Cat copy assignment operator"<< RESET << std::endl;
+    std::cout<<DR_RED << "Cat copy assignment operator"<< RESET << std::endl;
     if (this != &other)
     {
         delete _brain;
@@ -22,7 +22,7 @@ Cat& Cat::operator=(const Cat& other) {
 
 Cat::~Cat() {
     delete _brain;
-    std::cout <<RED <<"Cat destructor"<< RESET << std::endl;
+    std::cout <<DR_RED <<"Cat destructor"<< RESET << std::endl;
 }
 
 void Cat::makeSound() const {
@@ -30,6 +30,6 @@ void Cat::makeSound() const {
 }
 
 Brain* Cat::getBrain() const {
-    std::cout<<BRED << "Cat getBrain called"<< RESET << std::endl;
+    std::cout<<DR_RED << "Cat getBrain called"<< RESET << std::endl;
     return _brain;
 }
