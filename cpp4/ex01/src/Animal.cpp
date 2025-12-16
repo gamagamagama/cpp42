@@ -44,7 +44,7 @@ std::string Animal::getType() const
 
 void Animal::makeSound() const
 {
-    std::cout<<BLUE << "wecome to the jungle"<< RESET << std::endl;
+    std::cout<<BLUE << "welcome to the jungle"<< RESET << std::endl;
 }
 
 // Brain* Animal::getBrain() const {

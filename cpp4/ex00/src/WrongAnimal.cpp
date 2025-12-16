@@ -3,7 +3,6 @@
 
 WrongAnimal::WrongAnimal() : _type("Animal")
 {
-   // _type = "WrongAnimal";
    // std::cout << "WrongAnimal default constructor called" << std::endl;
 }
 
@@ -29,7 +28,7 @@ WrongAnimal &WrongAnimal::operator=(const WrongAnimal &copy)
 
 WrongAnimal::~WrongAnimal()
 {
-    //std::cout << "WrongAnimal destructor called" << std::endl;
+   // std::cout << "WrongAnimal destructor called" << std::endl;
 }
 
 std::string WrongAnimal::getType() const
